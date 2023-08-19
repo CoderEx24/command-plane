@@ -138,10 +138,10 @@ awful.screen.connect_for_each_screen(function(s)
         layout  = {
             spacing_widget = {
                 {
-                    forced_width  = 5,
-                    forced_height = 24,
-                    thickness     = 1,
-                    color         = '#777777',
+                    forced_width  = 4,
+                    forced_height = 30,
+                    thickness     = 4,
+                    color         = '#11c0ff',
                     widget        = wibox.widget.separator
                 },
                 valign = 'center',
@@ -149,7 +149,7 @@ awful.screen.connect_for_each_screen(function(s)
                 widget = wibox.container.place,
             },
             spacing = 20,
-            layout  = wibox.layout.ratio.horizontal
+            layout  = wibox.layout.ratio.horizontal,
         },
 
         widget_template = {
@@ -181,29 +181,58 @@ awful.screen.connect_for_each_screen(function(s)
         position = "top", 
         opacity = 0.9,
         screen = s,
-        shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
-        margins = 70,
+        -- bad hack
+        border_width = 20,
+        border_color = '#00000000',
     })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+        expand = 'none',
+
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            s.mytaglist,
+            layout = wibox.layout.align.horizontal,
+            strategy = 'min',
+            
+            {
+                widget = wibox.container.background,
+                shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
+                bg = '#2222f070',
+                s.mytaglist,
+            },
         },
-        s.mytasklist, -- Middle widget
+        {
+            layout = wibox.layout.fixed.horizontal,
+            strategy = 'min',
+
+            {
+                widget = wibox.container.background,
+                shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
+                bg = '#2222f070',
+                s.mytasklist,
+            },
+        },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            battaryarc({
-                arc_thickness = 5,
-                size = 50,
-                warning_msg_icon = '/home/coderex/.config/awesome/batteryarc-widget/spaceman.jpg',
-            }),
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+            
+            {
+                widget = wibox.container.background,
+                shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
+                bg = '#2222f070',
+
+                {
+                    layout = wibox.layout.fixed.horizontal,
+                    battaryarc({
+                        arc_thickness = 5,
+                        size = 50,
+                        warning_msg_icon = '/home/coderex/.config/awesome/batteryarc-widget/spaceman.jpg',
+                    }),
+                    wibox.widget.systray(),
+                    mytextclock,
+                    s.mylayoutbox,
+                },
+            },
     	},
     }
 end)
