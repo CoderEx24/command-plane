@@ -511,6 +511,18 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
+    { rule = { class = 'qutebrowser' },
+        properties = { tag = "\u{f0ac}" } },
+
+    { rule = { class = 'LibreWolf' },
+        properties = { tag = "\u{e007}" } },
+
+    { rule = { class = 'KeePassXC' },
+        properties = { tag = "\u{f023}" } },
+
+    { rule = { class = 'Virt-manager' },
+        properties = { tag = "\u{e4e5}" } },
+
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
