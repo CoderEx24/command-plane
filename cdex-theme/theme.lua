@@ -30,9 +30,9 @@ theme.bg_systray = theme.bg_normal
 
 -- {{{ Borders
 theme.useless_gap   = dpi(6)
-theme.border_width  = dpi(2)
-theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#6F6F6F"
+theme.border_width  = dpi(4)
+theme.border_normal = dark_blue .. '20'
+theme.border_focus  = bright_blue .. '20'
 theme.border_marked = "#CC9393"
 -- }}}
 
@@ -79,8 +79,8 @@ theme.menu_width  = dpi(100)
 -- {{{ Taglist
 theme.taglist_font = "Font Awesome 8"
 theme.taglist_spacing = 5
-theme.taglist_squares_sel   = themes_path .. "zenburn/taglist/squarefz.png"
-theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
+--theme.taglist_squares_sel   = themes_path .. "zenburn/taglist/squarefz.png"
+--theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
 theme.taglist_bg_normal = '#fff333'
 --theme.taglist_squares_resize = "false"
 -- }}}
