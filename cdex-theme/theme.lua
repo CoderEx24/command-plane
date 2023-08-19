@@ -1,9 +1,3 @@
-
--------------------------------
---  "Zenburn" awesome theme  --
---    By Adrian C. (anrxc)   --
--------------------------------
-
 local themes_path = "/home/coderex/.config/awesome/" -- require("gears.filesystem").get_themes_dir()
 local dpi = require("beautiful.xresources").apply_dpi
 
@@ -19,11 +13,11 @@ local bright_blue = "#47c1f1"
 local dark_blue   = "#1111a4"
 
 -- {{{ Colors
-theme.fg_normal  = bright_blue -- "#47c1f1"
-theme.fg_focus   = dark_blue -- "#1111a4"
+theme.fg_normal  = bright_blue
+theme.fg_focus   = dark_blue
 theme.fg_urgent  = "#CC9393"
-theme.bg_normal  = '#222222' -- dark_blue -- "#1111a4"
-theme.bg_focus   = bright_blue -- "#47c1f1"
+theme.bg_normal  = '#222222'
+theme.bg_focus   = bright_blue
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal
 -- }}}
