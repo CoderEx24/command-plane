@@ -16,7 +16,7 @@ local dark_blue   = "#1111a4"
 theme.fg_normal  = bright_blue
 theme.fg_focus   = dark_blue
 theme.fg_urgent  = "#CC9393"
-theme.bg_normal  = '#222222'
+theme.bg_normal  = '#00000000'
 theme.bg_focus   = bright_blue
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal
@@ -76,6 +76,7 @@ theme.taglist_spacing = 5
 --theme.taglist_squares_sel   = themes_path .. "zenburn/taglist/squarefz.png"
 --theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
 theme.taglist_bg_normal = '#fff333'
+theme.bg_systray = dark_blue .. '20'
 --theme.taglist_squares_resize = "false"
 -- }}}
 --
