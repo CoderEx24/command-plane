@@ -7,7 +7,7 @@ theme.wallpaper = themes_path .. "cdex-theme/background.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Inconolata Expaneded Black 8"
+theme.font      = "Inconolata Expaneded Black 10"
 
 local bright_blue = "#47c1f1"
 local dark_blue   = "#1111a4"
@@ -72,7 +72,7 @@ theme.menu_width  = dpi(100)
 -- {{{ Icons
 -- {{{ Taglist
 theme.taglist_font = "Font Awesome 8"
-theme.taglist_spacing = 5
+theme.taglist_spacing = 18
 --theme.taglist_squares_sel   = themes_path .. "zenburn/taglist/squarefz.png"
 --theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
 theme.taglist_bg_normal = '#fff333'
