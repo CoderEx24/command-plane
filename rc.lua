@@ -111,21 +111,20 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     awful.tag({ "\u{f120}", 
+                "\u{f1c1}",
                 "\u{f0ac}",
                 "\u{e007}",
                 "\u{e4e5}",
                 "\u{f023}",
-                "6",
-                "7",
-                "\u{f3df}",
-                "\u{f392}" }, s, awful.layout.layouts[1])
+                "\u{f27a}",
+                "\u{f3df}"  }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
 
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
+    s.top_taglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
     }
@@ -192,25 +191,21 @@ awful.screen.connect_for_each_screen(function(s)
         expand = 'none',
 
         { -- Left widgets
-            layout = wibox.layout.align.horizontal,
-            strategy = 'min',
-            
-            {
-                widget = wibox.container.background,
-                shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
-                bg = '#2222f070',
-                s.mytaglist,
-            },
-        },
-        {
             layout = wibox.layout.fixed.horizontal,
             strategy = 'min',
 
             {
                 widget = wibox.container.background,
-                shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
-                bg = '#2222f070',
                 s.mytasklist,
+            },
+        },
+        {
+            layout = wibox.layout.align.horizontal,
+            strategy = 'min',
+            
+            {
+                widget = wibox.container.background,
+                s.top_taglist,
             },
         },
         { -- Right widgets
@@ -511,10 +506,18 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
+    { rule = { class = 'Zathura' },
+        properties = { tag = "\u{f1c1}" } },
+
     { rule = { class = 'qutebrowser' },
         properties = { tag = "\u{f0ac}" } },
 
-    { rule = { class = 'LibreWolf' },
+    { rule_any = { 
+        class = { 
+                'LibreWolf',
+                'Tor Browser',
+            }    
+        },
         properties = { tag = "\u{e007}" } },
 
     { rule = { class = 'KeePassXC' },
@@ -522,6 +525,16 @@ awful.rules.rules = {
 
     { rule = { class = 'Virt-manager' },
         properties = { tag = "\u{e4e5}" } },
+
+    { rule_any = {
+        class = { 
+                'Signal',
+                'Session',
+                'Jami',
+                'discord',
+            }
+        },
+        properties = { tag = "\u{f27a}" } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },

@@ -1,4 +1,5 @@
 local themes_path = "/home/coderex/.config/awesome/" -- require("gears.filesystem").get_themes_dir()
+local gears = require("gears")
 local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
@@ -71,8 +72,9 @@ theme.menu_width  = dpi(100)
 
 -- {{{ Icons
 -- {{{ Taglist
-theme.taglist_font = "Font Awesome 8"
+theme.taglist_font = "Font Awesome 10"
 theme.taglist_spacing = 18
+theme.taglist_shape_focus = gears.shape.circle
 --theme.taglist_squares_sel   = themes_path .. "zenburn/taglist/squarefz.png"
 --theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
 theme.taglist_bg_normal = '#fff333'
