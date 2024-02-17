@@ -50,9 +50,9 @@ end
 beautiful.init("/home/coderex/.config/awesome/cdex-theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty -e zsh -c tmux"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"
-editor_cmd = "alacritty -e vim"
+editor_cmd = "kitty vim"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
