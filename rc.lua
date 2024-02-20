@@ -80,10 +80,11 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
--- }}}
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
+
+-- }}}
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -135,18 +136,6 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         layout  = {
-            spacing_widget = {
-                {
-                    forced_width  = 4,
-                    forced_height = 30,
-                    thickness     = 4,
-                    color         = '#11c0ff',
-                    widget        = wibox.widget.separator
-                },
-                valign = 'center',
-                halign = 'center',
-                widget = wibox.container.place,
-            },
             spacing = 20,
             layout  = wibox.layout.ratio.horizontal,
         },
