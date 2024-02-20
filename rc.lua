@@ -166,9 +166,15 @@ awful.screen.connect_for_each_screen(function(s)
                 margins = 5,
                 widget  = wibox.container.place
             },
-            nil,
             create_callback = function(self, c, index, objects) --luacheck: no unused args
                 self:get_children_by_id('clienticon')[1].client = c
+            end,
+            update_callback = function(self, c, index, objects)
+                local clienticon = self:get_children_by_id('clienticon')[1]
+                clienticon.opacity = c.minimized and 0.5 or 1
+                clienticon:emit_signal("widget::layout_changed")
+                clienticon:emit_signal("widget::redraw_needed")
+
             end,
             layout = wibox.layout.align.vertical,
         },
