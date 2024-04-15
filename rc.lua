@@ -183,6 +183,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+        spacing = 300,
         expand = 'none',
 
         { -- Left widgets
@@ -203,27 +204,35 @@ awful.screen.connect_for_each_screen(function(s)
                 s.top_taglist,
             },
         },
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            
-            {
-                widget = wibox.container.background,
-                shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 80) end,
-                bg = '#2222f070',
+    }
+    
+    s.sidebar = awful.wibar({
+        position = 'right',
+        opacity = 0.9,
+        screen = s,
+        width = 50,
+        border_width = 30,
+        border_color = '#00000000',
 
-                {
-                    layout = wibox.layout.fixed.horizontal,
-                    battaryarc({
-                        arc_thickness = 5,
-                        size = 50,
-                        warning_msg_icon = '/home/coderex/.config/awesome/batteryarc-widget/spaceman.jpg',
-                    }),
-                    wibox.widget.systray(),
-                    mytextclock,
-                    s.mylayoutbox,
-                },
-            },
-    	},
+    })
+
+    s.sidebar:setup {
+        layout = wibox.layout.flex.vertical,
+        spacing = 7,
+        spacing_widget = {
+            color = beautiful.fg_normal,
+            shape = gears.shape.line,
+            thickness = 80,
+            widget = wibox.widget.separator,
+        },
+
+        wibox.widget.systray(),
+        mytextclock,
+        battaryarc({
+            arc_thickness = 7,
+            warning_msg_icon = '/home/coderex/.config/awesome/batteryarc-widget/spaceman.jpg',
+        }),
+        s.mylayoutbox,
     }
 end)
 -- }}}
