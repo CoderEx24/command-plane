@@ -125,7 +125,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mylayoutbox = awful.widget.layoutbox(s)
 
     -- Create a taglist widget
-    s.top_taglist = awful.widget.taglist {
+    s.taglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
     }
@@ -201,7 +201,7 @@ awful.screen.connect_for_each_screen(function(s)
             
             {
                 widget = wibox.container.background,
-                s.top_taglist,
+                s.taglist,
             },
         },
     }
