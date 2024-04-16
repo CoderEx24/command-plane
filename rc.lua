@@ -20,6 +20,7 @@ require("awful.hotkeys_popup.keys")
 
 local battaryarc = require("batteryarc-widget.batteryarc")
 local wifi_widget = require("widgets.wifi")
+local brightness_widget = require("widgets.brightness")
 
 require('autostart')
 
@@ -235,8 +236,19 @@ awful.screen.connect_for_each_screen(function(s)
             warning_msg_icon = '/home/coderex/.config/awesome/batteryarc-widget/spaceman.jpg',
         }),
         wifi_widget(),
+        brightness_widget(),
         s.mylayoutbox,
         wibox.widget.systray(),
+    }
+
+    gears.timer {
+        timeout = 1,
+        autostart = true,
+        call_now = true,
+        callback = function()
+            s.sidebar:emit_signal('widget::layout_changed')
+            s.sidebar:emit_signal('widget::redraw_needed')
+        end
     }
 end)
 -- }}}
@@ -252,6 +264,10 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({modkey, "Shift"    }, "x",      function() awful.spawn("xscreensaver-command --lock") end,
     	      {description="lock the screen", group="awesome"}),
+    awful.key({ },                   "XF86MonBrightnessUp",   function() awful.spawn([[brightnessctl s +10%]]) end,
+          {description="increase brightness", group="management"}),
+    awful.key({ },                   "XF86MonBrightnessDown",   function() awful.spawn([[brightnessctl s 10%-]]) end,
+              {description="decrease brightness", group="management"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
