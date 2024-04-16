@@ -19,6 +19,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 local battaryarc = require("batteryarc-widget.batteryarc")
+local wifi_widget = require("widgets.wifi")
+
+require('autostart')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -226,13 +229,14 @@ awful.screen.connect_for_each_screen(function(s)
             widget = wibox.widget.separator,
         },
 
-        wibox.widget.systray(),
         mytextclock,
         battaryarc({
             arc_thickness = 7,
             warning_msg_icon = '/home/coderex/.config/awesome/batteryarc-widget/spaceman.jpg',
         }),
+        wifi_widget(),
         s.mylayoutbox,
+        wibox.widget.systray(),
     }
 end)
 -- }}}
